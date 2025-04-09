@@ -112,6 +112,11 @@ def generate_ppt():
         print("[RESPONSE] Sending file to client")
         return send_file(output_path, as_attachment=True, download_name='Generated_Presentation.pptx')
 
+@app.route('/health', methods=['GET'])
+def health_check():
+    print("[HEALTH] Health check request received")
+    return {"status": "Service is healthy"}, 200
+
 if __name__ == '__main__':
     print("[SERVER] Starting Flask app on port 5000")
     app.run(debug=True, port=5000)
